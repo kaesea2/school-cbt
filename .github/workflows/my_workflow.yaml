@@ -14,12 +14,15 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
-      
+
+      - name: install_requirements
+        run: pip3 install -r requirements.txt
+        shell: bash
+
       - name: migrate_app
         run: python3 manage.py migrate_app
         shell: bash
    
-      
       - name: run_app
         run: python3 manage.py runserver
         shell: bash
