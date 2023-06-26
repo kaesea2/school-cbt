@@ -1,0 +1,27 @@
+name: django ci workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_app:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: migrate_app
+        run: python3 manage.py migrate_app
+        shell: bash
+   
+      
+      - name: run_app
+        run: python3 manage.py runserver
+        shell: bash
+  # dockerize_app:
+
