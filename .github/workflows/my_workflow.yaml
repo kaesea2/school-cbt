@@ -20,7 +20,7 @@ jobs:
         shell: bash
 
       - name: migrate_app
-        run: python3 manage.py migrate_app
+        run: python3 manage.py migrate
         shell: bash
    
       - name: run_app
