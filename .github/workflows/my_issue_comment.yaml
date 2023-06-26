@@ -1,12 +1,14 @@
 name: create a comment on new issue
+
 on: 
   issues:
     types: [opened]
+
 jobs:
   comment-with-action:
     runs-on: ubuntu-22.04
     steps:
       - name: "dump github context"
-        run: echo '${{toJSON(github.event)}}' | jq
+        run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
         
