@@ -1,5 +1,4 @@
 name: create a comment on new issue
-
 on: 
   issues:
     types: [opened]
