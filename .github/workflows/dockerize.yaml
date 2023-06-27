@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build docker image 
-        run: sudo docker build -t kaesea/django-ci:v1.0 .
+        run: sudo docker build -t kaesea/django-ci:${{ github.run_number }} .
         shell: bash
       
       - name: login to docker
@@ -43,12 +43,12 @@ jobs:
 
       - name: push image to docker hub
         run: |
-          docker push kaesea/django-ci:v1.0
+          docker push kaesea/django-ci:${{ github.run_number }}
 
   run:
     runs-on: self-hosted
     needs: deploy
-    steps:
+    steps: 
       - name: pull image from docker hub
         env:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -56,5 +56,11 @@ jobs:
         
         run: |
           docker login -u $USERNAME -p $PASSWORD
-          docker pull kaesea/django-ci:v1.0
-          docker run -d -p 8000:8000 --rm kaesea/django-ci:v1.0
+          docker pull kaesea/django-ci:${{ github.run_number }}
+      - name: docker run container
+        run: |
+          docker run -d -p 8000:8000 --rm kaesea/django-ci:${{ github.run_number }}
+      
+      - name: delete image
+        run: |
+          docker image rm kaesea/django-ci:${{ github.run_number }}
