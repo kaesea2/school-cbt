@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build docker image 
-        run: docker build -t kaesea/django-ci:v1.0 .
+        run: sudo docker build -t kaesea/django-ci:v1.0 .
         shell: bash
       
       - name: login to docker
