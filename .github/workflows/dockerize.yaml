@@ -13,7 +13,7 @@ jobs:
           pwd
           whoami
           id
-          sudo apt install python3-pip docker.io nginx
+          sudo apt install python3-pip docker.io nginx -y
         shell: bash
   build:
     runs-on: self-hosted
