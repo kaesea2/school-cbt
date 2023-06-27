@@ -1,4 +1,4 @@
-FROM python3.9
+FROM python:3.12.0b3-bullseye
 
 WORKDIR /app
 COPY . /app
