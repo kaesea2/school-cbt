@@ -40,7 +40,7 @@ jobs:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo $PASSWORD | sudo docker login -u $USERNAME -p --password-stdin
+          sudo docker login -u $USERNAME -p $PASSWORD
 
       - name: push image to docker hub
         run: |
@@ -56,7 +56,7 @@ jobs:
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         
         run: |
-          echo $PASSWORD | sudo docker login -u $USERNAME -p --password-stdin
+          sudo docker login -u $USERNAME -p $PASSWORD
           sudo docker pull kaesea/django-ci:${{ github.run_number }}
       - name: docker run container
         run: |
