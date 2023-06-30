@@ -6,8 +6,8 @@ name: Dockerize school-cbt
 # documentation.
 
 on:
-  schedule:
-    - cron: '5 2 * * *'
+#   schedule:
+#     - cron: '5 2 * * *'
   push:
     branches: [ "master" ]
     # Publish semver tags as releases.
